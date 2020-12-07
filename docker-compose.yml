@@ -1,0 +1,50 @@
+version: '3'
+services:
+  proxy:
+    build:
+      context: ./proxy
+    image: eyedevelop/bungeecord:1487
+    container_name: bc_proxy
+    volumes:
+      - "./volumes/proxy:/server"
+    ports:
+      - "25565:25565"
+    restart: "no"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - VERSION=1487
+      - MEMORY_USAGE=512M
+  database:
+    image: postgres:latest
+    container_name: database
+    restart: "no"
+    environment:
+      - POSTGRES_PASSWORD=password
+
+  jack:
+    build:
+      context: ./server
+    image: eyedevelop/spigot:1.15.2
+    container_name: bcsjack
+    volumes:
+      - "./volumes/servers/jack:/server"
+    restart: "no"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - MC_VERSION=1.15.2
+      - MEMORY_USAGE=1G
+  lucy:
+    build:
+      context: ./server
+    image: eyedevelop/spigot:1.15.2
+    container_name: bcslucy
+    volumes:
+      - "./volumes/servers/lucy:/server"
+    restart: "no"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - MC_VERSION=1.15.2
+      - MEMORY_USAGE=1G

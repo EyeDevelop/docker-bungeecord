@@ -4,7 +4,7 @@ services:
     build:
       context: .
       dockerfile: proxy/Dockerfile
-    image: eyedevelop/bungeecord:1487
+    image: eyedevelop/bungeecord
     container_name: bc_proxy
     volumes:
       - "./volumes/proxy:/server"
@@ -27,7 +27,7 @@ services:
     build:
       context: .
       dockerfile: server/Dockerfile
-    image: eyedevelop/spigot:1.15.2
+    image: eyedevelop/spigot
     container_name: bcsjack
     volumes:
       - "./volumes/servers/jack:/server"
@@ -41,7 +41,7 @@ services:
     build:
       context: .
       dockerfile: server/Dockerfile
-    image: eyedevelop/spigot:1.15.2
+    image: eyedevelop/spigot
     container_name: bcslucy
     volumes:
       - "./volumes/servers/lucy:/server"

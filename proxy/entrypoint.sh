@@ -11,8 +11,8 @@ if [[ ! -d "/server" ]]; then
 fi
 
 if [[ ! -f "/server/bungeecord.jar" ]]; then
-    echo "Downloading BungeeCord ${VERSION}..."
-    curl -L -o "/server/bungeecord.jar" "https://ci.md-5.net/job/BungeeCord/${VERSION}/artifact/bootstrap/target/BungeeCord.jar"
+    echo "Downloading BungeeCord v${BC_VERSION}..."
+    curl -L -o "/server/bungeecord.jar" "https://ci.md-5.net/job/BungeeCord/${BC_VERSION}/artifact/bootstrap/target/BungeeCord.jar"
 fi
 
 if [[ ! -f "/run.sh" ]]; then

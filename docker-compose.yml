@@ -2,7 +2,8 @@ version: '3'
 services:
   proxy:
     build:
-      context: ./proxy
+      context: .
+      dockerfile: proxy/Dockerfile
     image: eyedevelop/bungeecord:1487
     container_name: bc_proxy
     volumes:
@@ -13,7 +14,7 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - VERSION=1487
+      - BC_VERSION=1487
       - MEMORY_USAGE=512M
   database:
     image: postgres:latest
@@ -24,7 +25,8 @@ services:
 
   jack:
     build:
-      context: ./server
+      context: .
+      dockerfile: server/Dockerfile
     image: eyedevelop/spigot:1.15.2
     container_name: bcsjack
     volumes:
@@ -37,7 +39,8 @@ services:
       - MEMORY_USAGE=1G
   lucy:
     build:
-      context: ./server
+      context: .
+      dockerfile: server/Dockerfile
     image: eyedevelop/spigot:1.15.2
     container_name: bcslucy
     volumes:
